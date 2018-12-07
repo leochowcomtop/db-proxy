@@ -1,0 +1,60 @@
+spring:
+  redis:
+    password:
+    database: 0
+    port: 6379
+    pool:
+      max-idle: 8
+      min-idle: 0
+      max-active: 8
+      max-wait: -1
+    host: localhost
+    ssl: false
+    timeout: 0
+
+  datasource:
+    url: "jdbc:h2:mem:AZ"
+    username: "guest"
+    password: "guest"
+    driver-class-name: "org.h2.Driver"
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: create
+    database: "h2"
+    show-sql: true
+debug: true
+
+
+hikari:
+  master:
+    jdbc-url: jdbc:mysql://192.168.83.225:3306/crush?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
+    username: root
+    password: root
+    maximum-pool-size: 20
+    pool-name: master
+    connection-timeout: 30000
+    idle-timeout: 600000
+    max-lifetime: 1765000
+  slaves:
+    - jdbc-url: jdbc:mysql://192.168.83.225:3306/crush?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
+      username: root
+      password: root
+      maximum-pool-size: 80
+      pool-name: slave1
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1765000
+      read-only: true
+    - jdbc-url: jdbc:mysql://192.168.83.225:3306/crush?useUnicode=true&characterEncoding=utf8&useSSL=true&allowMultiQueries=true&verifyServerCertificate=false
+      username: root
+      password: root
+      maximum-pool-size: 80
+      pool-name: slave2
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1765000
+      read-only: true
