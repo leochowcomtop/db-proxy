@@ -45,8 +45,6 @@ hikari:
 程序入口：
 1. exclude 默认数据源装配
 
-2.@EnableAutoConfiguration
-
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class ExampleApplication {
     public static void main(String[] args) {
